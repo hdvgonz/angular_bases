@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Character } from '../../interfaces/character.interface';
 
 @Component({
   selector: 'add-character',
@@ -7,4 +8,20 @@ import { Component } from '@angular/core';
 })
 export class AgregarComponent {
 
+  @Output()
+  public ownNewCharacter:EventEmitter<Character> = new EventEmitter();
+
+  public character:Character = {
+    name: '',
+    power: 0
+  }
+  addCharacter() {
+    
+    if (this.character.name.length === 0) return;
+
+    this.ownNewCharacter.emit(this.character);
+
+    this.character = {name:'', power:0};
+
+  }
 }
