@@ -16,7 +16,7 @@ export class AgregarComponent {
     power: 0
   }
   addCharacter() {
-    
+
     if (this.character.name.length === 0) return;
 
     this.ownNewCharacter.emit(this.character);
